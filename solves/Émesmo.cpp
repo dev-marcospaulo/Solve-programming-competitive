@@ -22,51 +22,33 @@ const int MAXN = 2e5+2;
 
 /*
     by: marcos andrade
-    date: 24/07/2024
-    link: https://neps.academy/br/exercise/1763
+    date:  25/08/2024
+    link: https://neps.academy/br/exercise/2349 
 */
-
-
-bool perfect(ll n) {
-    long long s = static_cast<ll>(sqrt(n));
-    return s*s == n;
-}
 
 
 
 void solve(){
 
+    int n, resp = 0, k, w;
+    
+    cin >> n >> k;
 
-    ll d;
-
-
+    while(n--){
+        cin >> w;
         
-    cin >> d;
-
-    bool pos = false;
-    if(d < 0){  
-        cout << "YES" << endl;
-        return;
-    }
-    if(d == 0){
-        cout << "YES" << endl;
-        return;
-    }
-    for(ll i = 0; i*i < d; i++){
-        for(ll j = 0; j*j < d; j++){
-            if( (i*i + j*j) > d ) break;
-
-            if(perfect((d - i*i - j*j))){
-                cout << "YES" << endl;
-                return;
-            }
-
+        while(w%2 == 0){
+            resp++;
+            w /= 2;
         }
-    }
-    cout << "NO" << endl;
-    
 
+    }
     
+    if(resp >= k)
+        cout << '1' << endl;
+    else    
+        cout << '0' << endl;
+
 }
 
 

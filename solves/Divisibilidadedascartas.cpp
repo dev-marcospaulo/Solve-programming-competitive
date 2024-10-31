@@ -22,51 +22,39 @@ const int MAXN = 2e5+2;
 
 /*
     by: marcos andrade
-    date: 24/07/2024
-    link: https://neps.academy/br/exercise/1763
+    date: 20/08/24
+    link: https://neps.academy/br/exercise/2340
 */
-
-
-bool perfect(ll n) {
-    long long s = static_cast<ll>(sqrt(n));
-    return s*s == n;
-}
 
 
 
 void solve(){
 
+    ll l,r;
 
-    ll d;
+
+    cin >> l >> r;
+    
+    
+    ll suml = ((l%9*(l%9 + 1))/2) % 9;
+    ll sumr = ((r%9*(r%9 + 1))/2) % 9;
 
 
-        
-    cin >> d;
-
-    bool pos = false;
-    if(d < 0){  
-        cout << "YES" << endl;
-        return;
-    }
-    if(d == 0){
-        cout << "YES" << endl;
-        return;
-    }
-    for(ll i = 0; i*i < d; i++){
-        for(ll j = 0; j*j < d; j++){
-            if( (i*i + j*j) > d ) break;
-
-            if(perfect((d - i*i - j*j))){
-                cout << "YES" << endl;
-                return;
-            }
-
+    if(l + 8 < r){
+        cout <<   ((36 - suml + l%9)%9 + sumr)%9  ;  
+    }else{
+        if(l%9 > r%9){
+            cout << ((36 - suml +  l%9)%9+sumr)% 9;
+        }else{
+            cout << (abs(sumr - suml))%9 << endl;
         }
+        
     }
-    cout << "NO" << endl;
-    
+    //cout << suml << endl;
 
-    
+
+
+
 }
 
 

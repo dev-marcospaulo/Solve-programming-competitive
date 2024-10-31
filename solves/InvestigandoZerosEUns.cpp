@@ -29,6 +29,35 @@ const int MAXN = 2e5+2;
 
 
 
+struct SegmentTree {
+    
+    vector<int> segmentTree; 
+ 
+    
+    int f(int a, int  b){
+        if(a == -1 || b == -1)
+            return max(a,b);
+        return a&b;
+    }
+    
+
+  
+    int find(int node, int left1, int right1, int start, int end) {
+        if (start > right1 || left1 > end) 
+            return -1;
+        if (left1 >= start && end >= right1) 
+            return segmentTree[node];
+
+        int mid = (left1 + right1) / 2;
+        return f(find(2*node, left1, mid, start, end),find(2*node+1, mid+1, right1, start, end));
+    }
+    
+    
+};
+
+
+
+
 void solve(){
 
     
